@@ -1,0 +1,78 @@
+plugins {
+    id 'com.android.library'
+    id 'org.jetbrains.kotlin.android'
+    id 'kotlin-kapt'
+    id 'com.google.dagger.hilt.android'
+    id 'org.jetbrains.kotlin.android.extensions'
+    id 'org.jetbrains.kotlin.plugin.serialization' version '1.5.21'
+
+
+}
+
+android {
+    namespace 'come.basim.hisham_porjectmylibrary'
+    compileSdk 33
+
+    defaultConfig {
+        minSdk 21
+        targetSdk 33
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles "consumer-rules.pro"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+
+    buildFeatures {
+        dataBinding true
+    }
+}
+
+dependencies {
+    //Module
+    api project(":domin")
+    implementation project(":core")
+
+    //Design
+    implementation 'androidx.core:core-ktx:1.7.0'
+    implementation 'androidx.appcompat:appcompat:1.6.1'
+    implementation 'com.google.android.material:material:1.8.0'
+
+//    dagger hilt
+    implementation "com.google.dagger:hilt-android:2.44"
+    implementation 'com.google.firebase:firebase-firestore-ktx:24.5.0'
+    kapt "com.google.dagger:hilt-compiler:2.44"
+
+    // Retrofit
+    implementation 'com.squareup.retrofit2:retrofit:2.9.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
+
+    //Gson
+    implementation 'com.google.code.gson:gson:2.10.1'
+
+    //Json
+    implementation 'org.jetbrains.kotlinx:kotlinx-serialization-json:1.4.1'
+
+    //moshi
+    implementation "com.squareup.retrofit2:converter-moshi:2.9.0"
+    implementation 'com.serjltt.moshi:moshi-lazy-adapters:2.2'
+    implementation 'com.squareup.moshi:moshi-kotlin:1.13.0'
+
+    //coil
+    implementation 'io.coil-kt:coil:2.3.0'
+
+
+}
+
